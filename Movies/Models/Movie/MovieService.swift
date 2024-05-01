@@ -90,6 +90,6 @@ struct MovieService {
             completion(data)
         }
         
-        task.resume()
+        task.resume() 
     }
 }
