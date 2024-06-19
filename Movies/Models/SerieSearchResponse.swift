@@ -6,3 +6,10 @@
 //
 
 import Foundation
+struct SerieSearchResponse: Decodable {
+    let search: [Serie]
+    
+    enum CodingKeys: String, CodingKey {
+        case search = "Search"
+    }
+}
