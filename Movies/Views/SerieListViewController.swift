@@ -1,25 +1,22 @@
 //
-//  MovieListViewController.swift
+//  SerieListViewController.swift
 //  Movies
 //
-//  Created by Geovana Contine on 26/03/24.
+//  Created by ios-noite-07 on 20/06/24.
 //
 
 import UIKit
 
-class MovieListViewController: UIViewController {
+class SerieListViewController: UIViewController {
 
-    // Outlets
     @IBOutlet weak var collectionView: UICollectionView!
-    
-    
     // Services
-    var movieService = MovieService()
+    var serieService = SerieService()
     
     // Search
     private let searchController = UISearchController()
     private let defaultSearchName = "Steve Jobs"
-    private var movies: [Movie] = []
+    private var series: [Serie] = []
     private let segueIdentifier = "showMovieDetailVC"
     
     // Collection item parameters
@@ -31,7 +28,7 @@ class MovieListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViewController()
-        loadMovies(withTitle: defaultSearchName)
+        loadSeries(withTitle: defaultSearchName)
     }
     
     private func setupViewController() {
@@ -39,10 +36,10 @@ class MovieListViewController: UIViewController {
         setupCollectionView()
     }
     
-    private func loadMovies(withTitle movieTitle: String) {
-        movieService.searchMovies(withTitle: movieTitle) { movies in
+    private func loadSeries(withTitle serieTitle: String) {
+        serieService.searchSeries(withTitle: serieTitle) { series in
             DispatchQueue.main.async {
-                self.movies = movies
+                self.series = series
                 self.collectionView.reloadData()
             }
         }
@@ -56,43 +53,43 @@ class MovieListViewController: UIViewController {
     
     private func setupCollectionView() {
         let nib = UINib(nibName: "MovieCollectionViewCell", bundle: nil)
-        collectionView.register(nib, forCellWithReuseIdentifier: MovieCollectionViewCell.identifier)
+        collectionView.register(nib, forCellWithReuseIdentifier: SerieCollectionViewCell.identifier)
         collectionView.dataSource = self
         collectionView.delegate = self
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let movieDetailVC = segue.destination as? MovieDetailViewController,
-              let movie = sender as? Movie else {
+        guard let serieDetailVC = segue.destination as? SerieDetailViewController,
+              let serie = sender as? Serie else {
             return
         }
         
-        movieDetailVC.movieId = movie.id
-        movieDetailVC.movieTitle = movie.title
+        serieDetailVC.serieId = serie.id
+        serieDetailVC.serieTitle = serie.title
     }
 }
 
 // MARK: - UICollectionViewDataSource
 
-extension MovieListViewController: UICollectionViewDataSource {
+extension SerieListViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        movies.count
+        series.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MovieCollectionViewCell.identifier, for: indexPath) as? MovieCollectionViewCell else {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SerieCollectionViewCell.identifier, for: indexPath) as? SerieCollectionViewCell else {
             return UICollectionViewCell()
         }
         
-        let movie = movies[indexPath.row]
-        cell.setup(movie: movie)
+        let serie = series[indexPath.row]
+        cell.setup(serie: serie)
         return cell
     }
 }
 
 // MARK: - UICollectionViewDelegateFlowLayout
 
-extension MovieListViewController: UICollectionViewDelegateFlowLayout {
+extension SerieListViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(
         _ collectionView: UICollectionView,
         layout collectionViewLayout: UICollectionViewLayout,
@@ -110,25 +107,28 @@ extension MovieListViewController: UICollectionViewDelegateFlowLayout {
 
 // MARK: - UICollectionViewDelegate
 
-extension MovieListViewController: UICollectionViewDelegate {
+extension SerieListViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let selectedMovie = movies[indexPath.row]
-        performSegue(withIdentifier: segueIdentifier, sender: selectedMovie)
+        let selectedSerie = series[indexPath.row]
+        performSegue(withIdentifier: segueIdentifier, sender: selectedSerie)
     }
 }
 
 // MARK: - UISearchResultsUpdating
 
-extension MovieListViewController: UISearchResultsUpdating {
+extension SerieListViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         let searchText = searchController.searchBar.text ?? ""
         
         if searchText.isEmpty {
-            loadMovies(withTitle: defaultSearchName)
+            loadSeries(withTitle: defaultSearchName)
         } else {
-            loadMovies(withTitle: searchText)
+            loadSeries(withTitle: searchText)
         }
         
         collectionView.reloadData()
     }
 }
+
+   
+

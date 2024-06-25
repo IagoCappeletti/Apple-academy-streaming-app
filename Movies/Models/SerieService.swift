@@ -10,6 +10,7 @@ import Foundation
 struct SerieService {
     
     private let apiBaseURL = "https://www.omdbapi.com/?apikey="
+
     private let apiToken = "fad9f001"
     
     private var apiURL: String {
@@ -20,7 +21,7 @@ struct SerieService {
     
     func searchSeries(withTitle title: String, completion: @escaping ([Serie]) -> Void) {
         let query = title.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
-        let endpoint = apiURL + "&s=\(query)"
+        let endpoint = apiURL + "&type=series\(query)"
         
         guard let url = URL(string: endpoint) else {
             completion([])
@@ -51,7 +52,7 @@ struct SerieService {
     
     func searchSerie(withId serieId: String, completion: @escaping (Serie?) -> Void) {
         let query = serieId.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
-        let endpoint = apiURL + "&i=\(query)"
+        let endpoint = apiURL + "&type=series&i=\(query)"
         
         guard let url = URL(string: endpoint) else {
             completion(nil)
