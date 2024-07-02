@@ -13,7 +13,6 @@
 		2E2586D02BB5F9A2006EF0BB /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E2586CC2BB5F9A2006EF0BB /* Movie.swift */; };
 		2E2586D12BB5F9A2006EF0BB /* FavoriteService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E2586CD2BB5F9A2006EF0BB /* FavoriteService.swift */; };
 		2E2586D22BB5F9A2006EF0BB /* MovieService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E2586CE2BB5F9A2006EF0BB /* MovieService.swift */; };
-		2E2586DC2BB5F9DB006EF0BB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2E2586D42BB5F9DB006EF0BB /* Main.storyboard */; };
 		2E2586DD2BB5F9DB006EF0BB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2E2586D52BB5F9DB006EF0BB /* LaunchScreen.storyboard */; };
 		2E2586DE2BB5F9DB006EF0BB /* MovieCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E2586D72BB5F9DB006EF0BB /* MovieCollectionViewCell.swift */; };
 		2E2586DF2BB5F9DB006EF0BB /* MovieCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E2586D82BB5F9DB006EF0BB /* MovieCollectionViewCell.xib */; };
@@ -23,6 +22,7 @@
 		2E2586E72BB5FA58006EF0BB /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E2586E42BB5FA58006EF0BB /* FavoritesViewController.swift */; };
 		2E2586E82BB5FA58006EF0BB /* MovieListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E2586E52BB5FA58006EF0BB /* MovieListViewController.swift */; };
 		2E2586ED2BB5FA76006EF0BB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2E2586EB2BB5FA76006EF0BB /* Assets.xcassets */; };
+		D3E359BD2C2E317D00AF8905 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2E2586D42BB5F9DB006EF0BB /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -212,9 +212,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				2E2586E02BB5F9DB006EF0BB /* MovieTableViewCell.xib in Resources */,
+				D3E359BD2C2E317D00AF8905 /* Main.storyboard in Resources */,
 				2E2586DD2BB5F9DB006EF0BB /* LaunchScreen.storyboard in Resources */,
 				2E2586ED2BB5FA76006EF0BB /* Assets.xcassets in Resources */,
-				2E2586DC2BB5F9DB006EF0BB /* Main.storyboard in Resources */,
 				2E2586DF2BB5F9DB006EF0BB /* MovieCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
