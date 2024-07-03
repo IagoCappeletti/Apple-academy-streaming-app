@@ -282,7 +282,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ml3-pB-Hk6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-664" y="2239"/>
+            <point key="canvasLocation" x="-663.35877862595419" y="2259.8591549295775"/>
         </scene>
         <!--Favoritos-->
         <scene sceneID="igq-Y4-2l6">
@@ -330,7 +330,42 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MOz-pm-66f" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="830" y="1483"/>
+            <point key="canvasLocation" x="830" y="1526"/>
+        </scene>
+        <!--Series-->
+        <scene sceneID="pjJ-8M-2FE">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DHn-FM-Fsm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <viewController id="Fum-d7-hGb" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="00p-EE-rqr">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="oXM-JR-Fal">
+                                <rect key="frame" x="0.0" y="140" width="414" height="673"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="P3F-y2-pzr">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Y0f-KZ-PZG"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="oXM-JR-Fal" firstAttribute="top" secondItem="Y0f-KZ-PZG" secondAttribute="top" id="4V1-rQ-B9d"/>
+                            <constraint firstItem="oXM-JR-Fal" firstAttribute="leading" secondItem="Y0f-KZ-PZG" secondAttribute="leading" id="IDZ-yi-nrI"/>
+                            <constraint firstItem="Y0f-KZ-PZG" firstAttribute="bottom" secondItem="oXM-JR-Fal" secondAttribute="bottom" id="UQj-T2-T7t"/>
+                            <constraint firstItem="Y0f-KZ-PZG" firstAttribute="trailing" secondItem="oXM-JR-Fal" secondAttribute="trailing" id="UjC-vh-CHS"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Series" id="PVt-n3-0qb"/>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="86" y="1483"/>
         </scene>
         <!--Serie-->
         <scene sceneID="Pve-Xp-Kob">
@@ -346,28 +381,12 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="eMD-cf-E3T" kind="relationship" relationship="rootViewController" id="of4-Is-Smj"/>
+                        <segue destination="Fum-d7-hGb" kind="relationship" relationship="rootViewController" id="of4-Is-Smj"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="czy-Qs-aVt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="71" y="755"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="0Py-do-VHL">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="eMD-cf-E3T" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationItem key="navigationItem" id="Jwg-mD-Ysj"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="JaA-NP-R4i">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="9Sx-go-GEK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="69.565217391304358" y="1482.5892857142856"/>
         </scene>
     </scenes>
     <resources>
