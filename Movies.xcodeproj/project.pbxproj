@@ -22,6 +22,7 @@
 		2E2586E72BB5FA58006EF0BB /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E2586E42BB5FA58006EF0BB /* FavoritesViewController.swift */; };
 		2E2586E82BB5FA58006EF0BB /* MovieListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E2586E52BB5FA58006EF0BB /* MovieListViewController.swift */; };
 		2E2586ED2BB5FA76006EF0BB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2E2586EB2BB5FA76006EF0BB /* Assets.xcassets */; };
+		D36C35E32C3760FB0096CE73 /* SerieListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36C35E22C3760FB0096CE73 /* SerieListViewController.swift */; };
 		D3E359BD2C2E317D00AF8905 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2E2586D42BB5F9DB006EF0BB /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
@@ -44,6 +45,7 @@
 		2E2586EA2BB5FA76006EF0BB /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2E2586EB2BB5FA76006EF0BB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2E54F4A82BB5F734007B6D93 /* Movies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Movies.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D36C35E22C3760FB0096CE73 /* SerieListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerieListViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +114,7 @@
 				2E2586E42BB5FA58006EF0BB /* FavoritesViewController.swift */,
 				2E2586E32BB5FA58006EF0BB /* MovieDetailViewController.swift */,
 				2E2586E52BB5FA58006EF0BB /* MovieListViewController.swift */,
+				D36C35E22C3760FB0096CE73 /* SerieListViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -233,6 +236,7 @@
 				2E2586DE2BB5F9DB006EF0BB /* MovieCollectionViewCell.swift in Sources */,
 				2E2586C92BB5F984006EF0BB /* SceneDelegate.swift in Sources */,
 				2E2586E12BB5F9DB006EF0BB /* MovieTableViewCell.swift in Sources */,
+				D36C35E32C3760FB0096CE73 /* SerieListViewController.swift in Sources */,
 				2E2586E82BB5FA58006EF0BB /* MovieListViewController.swift in Sources */,
 				2E2586E62BB5FA58006EF0BB /* MovieDetailViewController.swift in Sources */,
 				2E2586E72BB5FA58006EF0BB /* FavoritesViewController.swift in Sources */,
