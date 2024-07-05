@@ -287,7 +287,6 @@
         <!--Serie Detail View Controller Scene-->
         <scene sceneID="4Sp-dC-ZWN">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="w0K-8z-TcM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController id="DX2-vU-Jkm" userLabel="Serie Detail View Controller Scene" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tYh-48-SOj">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -307,6 +306,7 @@
                     <navigationItem key="navigationItem" id="WOw-ER-TiB"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="w0K-8z-TcM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="70" y="2259"/>
         </scene>
