@@ -11,14 +11,15 @@ struct SerieService {
     
     private let apiBaseURL = "https://www.omdbapi.com/?apikey="
     private let apiToken = "fad9f001"
+    private let serieURL =  "&type=series"
     
     private var apiURL: String {
-        apiBaseURL + apiToken
+        apiBaseURL + apiToken + serieURL
     }
     
     private let decoder = JSONDecoder()
     
-    func searchSeries(withTitle title: String, completion: @escaping ([Serie]) -> Void) {
+    func searchSeriesTitle(withTitle title: String, completion: @escaping ([Serie]) -> Void) {
         let query = title.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
         let endpoint = apiURL + "&s=\(query)"
         
@@ -49,7 +50,7 @@ struct SerieService {
         task.resume()
     }
     
-    func searchSerie(withId serieId: String, completion: @escaping (Serie?) -> Void) {
+    func searchSerieId(withId serieId: String, completion: @escaping (Serie?) -> Void) {
         let query = serieId.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
         let endpoint = apiURL + "&i=\(query)"
         
