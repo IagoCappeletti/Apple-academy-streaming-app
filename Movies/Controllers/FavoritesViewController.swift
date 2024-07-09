@@ -19,6 +19,7 @@ class FavoritesViewController: UIViewController {
     private let searchController = UISearchController()
     private var movies: [Movie] = []
 
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViewController()
