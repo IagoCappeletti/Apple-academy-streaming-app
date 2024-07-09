@@ -292,18 +292,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zG1-Zp-dec">
-                                <rect key="frame" x="36" y="120" width="240" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zG1-Zp-dec">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <viewLayoutGuide key="contentLayoutGuide" id="IT8-cA-JKA"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="PY5-gh-Shs"/>
                             </scrollView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="7oJ-VV-yAx"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="7oJ-VV-yAx" firstAttribute="trailing" secondItem="zG1-Zp-dec" secondAttribute="trailing" id="4Ry-MN-KfG"/>
+                            <constraint firstItem="7oJ-VV-yAx" firstAttribute="bottom" secondItem="zG1-Zp-dec" secondAttribute="bottom" id="QkR-9e-k8v"/>
+                            <constraint firstItem="zG1-Zp-dec" firstAttribute="top" secondItem="7oJ-VV-yAx" secondAttribute="top" id="msy-sz-P67"/>
+                            <constraint firstItem="zG1-Zp-dec" firstAttribute="leading" secondItem="7oJ-VV-yAx" secondAttribute="leading" id="yp9-3E-pRW"/>
+                        </constraints>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" id="WOw-ER-TiB"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w0K-8z-TcM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -369,7 +373,7 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="oXM-JR-Fal">
                                 <rect key="frame" x="0.0" y="140" width="414" height="673"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="P3F-y2-pzr">
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="P3F-y2-pzr">
                                     <size key="itemSize" width="128" height="128"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -395,7 +399,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DHn-FM-Fsm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="99" y="1497"/>
+            <point key="canvasLocation" x="70" y="1483"/>
         </scene>
         <!--Serie-->
         <scene sceneID="Pve-Xp-Kob">
@@ -418,9 +422,10 @@
             </objects>
             <point key="canvasLocation" x="71" y="755"/>
         </scene>
-        <!--Serie-->
+        <!--Serie Detail View Controller-->
         <scene sceneID="Rm9-FT-Ci0">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ypF-FY-Ajh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController id="f49-JB-mzf" customClass="SerieDetailViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="BUN-g0-Ohs">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -584,13 +589,6 @@
                                 <viewLayoutGuide key="contentLayoutGuide" id="rcx-5f-hoR"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="wFY-bk-7F3"/>
                             </scrollView>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="l4Q-TX-jRL">
-                                <rect key="frame" x="-161" y="18" width="414" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <items>
-                                    <navigationItem title="Title" id="zTS-x4-CZ1"/>
-                                </items>
-                            </navigationBar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Hyj-NF-WZ0"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -601,9 +599,6 @@
                             <constraint firstItem="Hyj-NF-WZ0" firstAttribute="trailing" secondItem="vgS-63-7Wr" secondAttribute="trailing" id="Pgb-c3-UBN"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Serie" id="we1-7c-RSd">
-                        <barButtonItem key="leftBarButtonItem" title="Item" id="cej-7c-C6S"/>
-                    </navigationItem>
                     <connections>
                         <outlet property="movieCountryLabel" destination="eCo-AU-KxE" id="BuM-u9-00q"/>
                         <outlet property="movieGenreLabel" destination="G6A-dC-KOs" id="mNe-06-Reo"/>
@@ -614,7 +609,6 @@
                         <outlet property="movieTitleLabel" destination="VMV-xv-4dG" id="Ldt-9o-usc"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ypF-FY-Ajh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-2357" y="2230"/>
         </scene>
