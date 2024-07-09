@@ -7,23 +7,49 @@
 
 import UIKit
 
-class SerieTableViewCell: UIViewController {
+protocol SerieTableViewCellDelegate: AnyObject {
+    func didTapFavoriteButton(forSerie serie: Serie)
+}
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+class SerieTableViewCell: UITableViewCell {
 
-        // Do any additional setup after loading the view.
+    static let identifier = "serieTableCell"
+    weak var delegate: SerieTableViewCellDelegate?
+    
+    // Outlets
+    @IBOutlet weak var serieTitleLabel: UILabel!
+    @IBOutlet weak var serieGenreLabel: UILabel!
+    @IBOutlet weak var serieImageView: UIImageView!
+    
+    private let serieService = SerieService()
+    
+    // Data
+    private var serie: Serie?
+    
+    func setup(serie: Serie) {
+        self.serie = serie
+        serieTitleLabel.text = serie.title
+        serieGenreLabel.text = serie.genre ?? "Não definido"
+        
+        serieImageView.layer.masksToBounds = true
+        serieImageView.layer.cornerRadius = 4
+        serieImageView.layer.borderWidth = 1
+        serieImageView.layer.borderColor = UIColor.black.cgColor
+        
+        // Load movie poster from URL
+        if let posterURL = serie.posterURL {
+            serieService.loadImageData(fromURL: posterURL) { imageData in
+                DispatchQueue.main.async {
+                    let serieImage = UIImage(data: imageData ?? Data())
+                    self.serieImageView.image = serieImage
+                }
+            }
+        }
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func didTapFavoriteButton(_ sender: Any) {
+        guard let serie = serie else { return }
+        delegate?.didTapFavoriteButton(forSerie: serie)
+        }
     }
-    */
 
-}
