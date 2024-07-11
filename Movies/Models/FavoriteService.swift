@@ -15,6 +15,9 @@ class FavoriteService {
     
     // In memory data
     private var favoriteMovies: [Movie] = []
+    private var favoriteSeries: [Serie] = []
+    
+    
     
     func listAll() -> [Movie] {
         favoriteMovies
@@ -35,4 +38,28 @@ class FavoriteService {
             movie.id == movieId
         }
     }
+    
+    //Series
+    
+    
+    func listAllSerie() -> [Serie] {
+        favoriteSeries
+    }
+    
+    func isFavoriteSerie(serieId: String) -> Bool {
+        favoriteSeries.contains { serie in
+            serie.id == serieId
+        }
+    }
+    
+    func addSerie(_ serie: Serie) {
+        favoriteSeries.append(serie)
+    }
+    
+    func removeSerie(withId serieId: String) {
+        favoriteSeries.removeAll { serie in
+            serie.id == serieId
+        }
+    }
+    
 }
