@@ -31,7 +31,7 @@
 		D3E359BD2C2E317D00AF8905 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2E2586D42BB5F9DB006EF0BB /* Main.storyboard */; };
 		D91BD0542C387EBE00435D7E /* SerieDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91BD0532C387EBE00435D7E /* SerieDetailViewController.swift */; };
 		D91BD0582C38AD3D00435D7E /* SerieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91BD0572C38AD3D00435D7E /* SerieTableViewCell.swift */; };
-		D91BD05A2C38B1A400435D7E /* SerieTableViewcell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D91BD0592C38B1A400435D7E /* SerieTableViewcell.xib */; };
+		D91BD05A2C38B1A400435D7E /* SerieTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D91BD0592C38B1A400435D7E /* SerieTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,7 +61,7 @@
 		D36C35E22C3760FB0096CE73 /* SerieListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerieListViewController.swift; sourceTree = "<group>"; };
 		D91BD0532C387EBE00435D7E /* SerieDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SerieDetailViewController.swift; sourceTree = "<group>"; };
 		D91BD0572C38AD3D00435D7E /* SerieTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerieTableViewCell.swift; sourceTree = "<group>"; };
-		D91BD0592C38B1A400435D7E /* SerieTableViewcell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SerieTableViewcell.xib; sourceTree = "<group>"; };
+		D91BD0592C38B1A400435D7E /* SerieTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SerieTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,7 +126,7 @@
 				2E2586DA2BB5F9DB006EF0BB /* MovieTableViewCell.xib */,
 				2E2586DB2BB5F9DB006EF0BB /* MovieTableViewCell.swift */,
 				D91BD0572C38AD3D00435D7E /* SerieTableViewCell.swift */,
-				D91BD0592C38B1A400435D7E /* SerieTableViewcell.xib */,
+				D91BD0592C38B1A400435D7E /* SerieTableViewCell.xib */,
 			);
 			path = MovieTableViewCell;
 			sourceTree = "<group>";
@@ -239,7 +239,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2E2586E02BB5F9DB006EF0BB /* MovieTableViewCell.xib in Resources */,
-				D91BD05A2C38B1A400435D7E /* SerieTableViewcell.xib in Resources */,
+				D91BD05A2C38B1A400435D7E /* SerieTableViewCell.xib in Resources */,
 				D3E359BD2C2E317D00AF8905 /* Main.storyboard in Resources */,
 				2E2586DD2BB5F9DB006EF0BB /* LaunchScreen.storyboard in Resources */,
 				D33399412C37BB54009E4933 /* SerieCollectionViewCell.xib in Resources */,

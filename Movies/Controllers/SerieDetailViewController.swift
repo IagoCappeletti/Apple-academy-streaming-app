@@ -21,6 +21,7 @@ class SerieDetailViewController: UIViewController {
     
     //Service
     var serieService = SerieService()
+    var favoriteService = FavoriteService.shared
     
     //Dados
     var serieId: String?
@@ -58,17 +59,17 @@ class SerieDetailViewController: UIViewController {
             serieLanguageLabel.text = serie?.language
             serieReleasedLabel.text = serie?.released
             seriePlotLabel.text = serie?.plot
-            //updateFavoriteButton()
+            updateFavoriteButton()
         }
     
-   // private func updateFavoriteButton(){
-     //   guard let serie = serie else { return }
+    private func updateFavoriteButton(){
+        guard let serie = serie else { return }
     
-    //    let isFavorite = favoriteService.isFavorite(serieId: serie.id)
-    //    self.serie?.isFavorite = isFavorite
-    //    let favoriteIcon = isFavorite ? "heart.fill" : "heart"
-    //    serieFavoriteButton.image = .init(systemName: favorite
-   // }
+        let isFavorite = favoriteService.isFavoriteSerie(serieId: serie.id)
+        self.serie?.isFavorite = isFavorite
+        let favoriteIcon = isFavorite ? "heart.fill" : "heart"
+        serieFavoriteButton.image = .init(systemName: favoriteIcon)
+    }
     
     private func updateSerieImage(withImageData imageData: Data?) {
         guard let imageData = imageData else { return }
@@ -79,6 +80,20 @@ class SerieDetailViewController: UIViewController {
         }
     }
     
-    
+    @IBAction func didTapfavoriteButtonSeries(_ sender: Any) {
+        
+        guard let serie = serie else { return }
+        
+        
+        if serie.isFavorite {
+            // Remove movie from favorite list
+            favoriteService.removeSerie(withId: serie.id)
+        } else {
+            // Add movie to favorite list
+            favoriteService.addSerie(serie)
+        }
+        
+        updateFavoriteButton()
+    }
     
 }
