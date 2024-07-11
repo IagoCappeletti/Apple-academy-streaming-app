@@ -395,7 +395,6 @@
         <!--Serie Detail View Controller-->
         <scene sceneID="fm9-T7-z8q">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="kha-rI-bxU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController id="aMl-XS-S8r" customClass="SerieDetailViewController" customModule="Movies" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qA1-6M-Qmc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -572,7 +571,7 @@
                     <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="7Ag-BY-sis">
                         <barButtonItem key="rightBarButtonItem" image="heart" catalog="system" style="done" id="PKQ-Th-YeD">
                             <connections>
-                                <action selector="didTapFavoriteButton:" destination="aMl-XS-S8r" id="FW7-Ad-WWk"/>
+                                <action selector="didTapfavoriteButtonSeries:" destination="aMl-XS-S8r" id="XA7-QN-QaB"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -588,6 +587,7 @@
                         <outlet property="view" destination="qA1-6M-Qmc" id="hv5-i1-b9G"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kha-rI-bxU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="70" y="2259"/>
         </scene>
