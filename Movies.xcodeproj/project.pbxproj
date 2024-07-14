@@ -29,6 +29,8 @@
 		D33399472C37C048009E4933 /* SerieSearchResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33399462C37C048009E4933 /* SerieSearchResponse.swift */; };
 		D36C35E32C3760FB0096CE73 /* SerieListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36C35E22C3760FB0096CE73 /* SerieListViewController.swift */; };
 		D3E359BD2C2E317D00AF8905 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2E2586D42BB5F9DB006EF0BB /* Main.storyboard */; };
+		D3FF36A82C448D7200C1FB3E /* SeriePopUpNotificatiion.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3FF36A72C448D7200C1FB3E /* SeriePopUpNotificatiion.swift */; };
+		D3FF36AA2C448DC200C1FB3E /* SeriePopUpNotificationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3FF36A92C448DC200C1FB3E /* SeriePopUpNotificationView.xib */; };
 		D91BD0542C387EBE00435D7E /* SerieDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91BD0532C387EBE00435D7E /* SerieDetailViewController.swift */; };
 		D91BD0582C38AD3D00435D7E /* SerieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91BD0572C38AD3D00435D7E /* SerieTableViewCell.swift */; };
 		D91BD05A2C38B1A400435D7E /* SerieTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D91BD0592C38B1A400435D7E /* SerieTableViewCell.xib */; };
@@ -59,6 +61,8 @@
 		D33399442C37BF71009E4933 /* SerieService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerieService.swift; sourceTree = "<group>"; };
 		D33399462C37C048009E4933 /* SerieSearchResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerieSearchResponse.swift; sourceTree = "<group>"; };
 		D36C35E22C3760FB0096CE73 /* SerieListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerieListViewController.swift; sourceTree = "<group>"; };
+		D3FF36A72C448D7200C1FB3E /* SeriePopUpNotificatiion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriePopUpNotificatiion.swift; sourceTree = "<group>"; };
+		D3FF36A92C448DC200C1FB3E /* SeriePopUpNotificationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SeriePopUpNotificationView.xib; sourceTree = "<group>"; };
 		D91BD0532C387EBE00435D7E /* SerieDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SerieDetailViewController.swift; sourceTree = "<group>"; };
 		D91BD0572C38AD3D00435D7E /* SerieTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerieTableViewCell.swift; sourceTree = "<group>"; };
 		D91BD0592C38B1A400435D7E /* SerieTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SerieTableViewCell.xib; sourceTree = "<group>"; };
@@ -101,6 +105,7 @@
 		2E2586D32BB5F9CF006EF0BB /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				D3FF36A62C448CC700C1FB3E /* MoviePopUp */,
 				2E2586D52BB5F9DB006EF0BB /* LaunchScreen.storyboard */,
 				2E2586D42BB5F9DB006EF0BB /* Main.storyboard */,
 				2E2586D62BB5F9DB006EF0BB /* MovieCollectionViewCell */,
@@ -180,6 +185,15 @@
 			path = Movies;
 			sourceTree = "<group>";
 		};
+		D3FF36A62C448CC700C1FB3E /* MoviePopUp */ = {
+			isa = PBXGroup;
+			children = (
+				D3FF36A72C448D7200C1FB3E /* SeriePopUpNotificatiion.swift */,
+				D3FF36A92C448DC200C1FB3E /* SeriePopUpNotificationView.xib */,
+			);
+			path = MoviePopUp;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -243,6 +257,7 @@
 				D3E359BD2C2E317D00AF8905 /* Main.storyboard in Resources */,
 				2E2586DD2BB5F9DB006EF0BB /* LaunchScreen.storyboard in Resources */,
 				D33399412C37BB54009E4933 /* SerieCollectionViewCell.xib in Resources */,
+				D3FF36AA2C448DC200C1FB3E /* SeriePopUpNotificationView.xib in Resources */,
 				2E2586ED2BB5FA76006EF0BB /* Assets.xcassets in Resources */,
 				2E2586DF2BB5F9DB006EF0BB /* MovieCollectionViewCell.xib in Resources */,
 			);
@@ -270,6 +285,7 @@
 				D91BD0542C387EBE00435D7E /* SerieDetailViewController.swift in Sources */,
 				2E2586E82BB5FA58006EF0BB /* MovieListViewController.swift in Sources */,
 				2E2586E62BB5FA58006EF0BB /* MovieDetailViewController.swift in Sources */,
+				D3FF36A82C448D7200C1FB3E /* SeriePopUpNotificatiion.swift in Sources */,
 				D33399452C37BF71009E4933 /* SerieService.swift in Sources */,
 				2E2586E72BB5FA58006EF0BB /* FavoritesViewController.swift in Sources */,
 				2E2586D12BB5F9A2006EF0BB /* FavoriteService.swift in Sources */,
