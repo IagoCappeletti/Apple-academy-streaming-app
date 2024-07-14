@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SeriePopUpNotificatiion" customModule="Movies" customModuleProvider="target">
+            <connections>
+                <outlet property="buttonClose" destination="QY1-yz-grW" id="XeA-Mz-5Gk"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="SeriePopUpNotificatiion" customModule="Movies" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k0x-BJ-E3Q">
+                    <rect key="frame" x="82" y="373" width="250" height="150"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Ahm-iJ-TZe">
+                            <rect key="frame" x="19" y="8" width="202.5" height="20.5"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Serie aaaa nao encontrada" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w7n-T0-ssp">
+                                    <rect key="frame" x="0.0" y="0.0" width="202.5" height="20.5"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                        </stackView>
+                        <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QY1-yz-grW">
+                            <rect key="frame" x="86" y="77" width="69" height="31"/>
+                            <color key="backgroundColor" name="AccentColor"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="40" id="geX-zs-21w"/>
+                                <constraint firstAttribute="width" constant="70" id="sBg-ul-wuY"/>
+                            </constraints>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="plain" title="CLOSE"/>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemTealColor"/>
+                    <constraints>
+                        <constraint firstItem="Ahm-iJ-TZe" firstAttribute="centerY" secondItem="k0x-BJ-E3Q" secondAttribute="centerY" id="4uG-gM-Ssl"/>
+                        <constraint firstItem="Ahm-iJ-TZe" firstAttribute="centerX" secondItem="k0x-BJ-E3Q" secondAttribute="centerX" id="DTC-ey-HFm"/>
+                        <constraint firstItem="Ahm-iJ-TZe" firstAttribute="centerY" secondItem="k0x-BJ-E3Q" secondAttribute="centerY" id="bCu-wd-LMj"/>
+                        <constraint firstItem="Ahm-iJ-TZe" firstAttribute="centerX" secondItem="k0x-BJ-E3Q" secondAttribute="centerX" id="iH2-1Z-mLh"/>
+                        <constraint firstAttribute="width" constant="250" id="klT-LI-3p0"/>
+                        <constraint firstAttribute="height" constant="150" id="ypS-ZD-G0w"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="k0x-BJ-E3Q" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="08r-lc-tEx"/>
+                <constraint firstItem="k0x-BJ-E3Q" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="lxh-5T-XJ1"/>
+            </constraints>
+            <point key="canvasLocation" x="632" y="-2091"/>
+        </view>
+    </objects>
+    <resources>
+        <namedColor name="AccentColor">
+            <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemTealColor">
+            <color red="0.18823529411764706" green="0.69019607843137254" blue="0.7803921568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
