@@ -323,8 +323,11 @@
                             <constraint firstItem="SY2-I8-Xrr" firstAttribute="leading" secondItem="wfM-sb-uq6" secondAttribute="leading" id="Ufb-OT-u0t"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Favoritos" id="T6k-P9-VGS"/>
+                    <navigationItem key="navigationItem" title="Favoritos" id="T6k-P9-VGS">
+                        <barButtonItem key="rightBarButtonItem" title="Item" id="pf2-s0-qGE"/>
+                    </navigationItem>
                     <connections>
+                        <outlet property="rightBarButtonItem" destination="pf2-s0-qGE" id="acT-2c-ZtE"/>
                         <outlet property="tableView" destination="SY2-I8-Xrr" id="lh7-3k-gMk"/>
                     </connections>
                 </viewController>

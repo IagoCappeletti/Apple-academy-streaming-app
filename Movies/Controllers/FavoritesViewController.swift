@@ -11,6 +11,7 @@ class FavoritesViewController: UIViewController {
     
     // Outlets
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var rightBarButtonItem: UIBarButtonItem!
     
     // Services
     var favoriteService = FavoriteService.shared
@@ -26,6 +27,27 @@ class FavoritesViewController: UIViewController {
         setupViewController()
     }
     
+    
+//    @IBOutlet weak var ButtonSerie: UICommand!
+//    @IBOutlet weak var ButtonMovies: UICommand!
+    
+    
+//    @IBAction func buttonOrdenacao(_ sender: UIBarButtonItem) {
+//
+//        if((ButtonSerie) != nil){
+//            print("teste serie")
+//        }
+//        else{
+//            print("teste movie")
+//        }
+//
+//
+//    }
+    
+    
+    
+    
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         movies = favoriteService.listAll()
@@ -34,13 +56,29 @@ class FavoritesViewController: UIViewController {
     }
     
     
+    
+    
     private func setupViewController() {
         setupSearchController()
         setupTableView()
-        movies = favoriteService.listAll()
-        series = favoriteService.listAllSerie()
+        setupRightBarButtonItem()
     }
     
+    private func setupRightBarButtonItem() {
+        let barButtonMenu = UIMenu(
+            title: "",
+            children: [
+                UIAction(title: "Filmes", handler: { action in
+                    print(action)
+                    self.movies = self.favoriteService.listAll()
+                }),
+                UIAction(title: "Séries", handler: { action in
+                    self.series = self.favoriteService.listAllSerie()
+                })
+            ])
+        
+        rightBarButtonItem.menu = barButtonMenu
+    }
     
     private func setupSearchController() {
         searchController.searchResultsUpdater = self
