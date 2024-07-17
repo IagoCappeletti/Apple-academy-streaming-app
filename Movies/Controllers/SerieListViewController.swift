@@ -11,6 +11,8 @@ class SerieListViewController: UIViewController {
     
    
     @IBOutlet weak var serieCollectionView: UICollectionView!
+    @IBOutlet weak var viewEstadoVazio: UIView!
+    @IBOutlet weak var labelEstadoVazio: UILabel!
     
     var serieService = SerieService()
     
@@ -36,9 +38,16 @@ class SerieListViewController: UIViewController {
             setupCollectionView()
     }
     
+    public func hiddenView(bool: Bool){
+        self.viewEstadoVazio.isHidden = bool
+    }
+     
+
     private func loadSeries(withTitle serieTitle: String) {
         serieService.searchSeriesTitle(withTitle: serieTitle) { series in
             DispatchQueue.main.async {
+                self.hiddenView(bool: !series.isEmpty)
+                self.labelEstadoVazio.text = "Está série " + searchText + "não foi encontrada"
                 self.series = series
                 self.serieCollectionView.reloadData()
             }
@@ -111,10 +120,10 @@ extension SerieListViewController: UICollectionViewDelegate {
 }
 
 // MARK: - UISearchResultsUpdating
-
+var searchText = ""
 extension SerieListViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
-        let searchText = searchController.searchBar.text ?? ""
+         searchText = searchController.searchBar.text ?? ""
         
         if searchText.isEmpty {
             loadSeries(withTitle: defaultSearchName)
