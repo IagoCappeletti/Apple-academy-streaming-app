@@ -340,8 +340,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="oXM-JR-Fal">
-                                <rect key="frame" x="0.0" y="140" width="414" height="673"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="oXM-JR-Fal">
+                                <rect key="frame" x="1000" y="140" width="414" height="673"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="P3F-y2-pzr">
                                     <size key="itemSize" width="128" height="128"/>
@@ -351,25 +351,50 @@
                                 </collectionViewFlowLayout>
                                 <cells/>
                             </collectionView>
+                            <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zda-Ql-V8o">
+                                <rect key="frame" x="0.0" y="390" width="414" height="116"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="magnifyingglass" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Jdh-iP-vwZ">
+                                        <rect key="frame" x="182" y="20.5" width="50" height="43"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="62c-eU-ZyO">
+                                        <rect key="frame" x="186" y="80" width="42" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" systemColor="linkColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemPinkColor"/>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Y0f-KZ-PZG"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="oXM-JR-Fal" firstAttribute="top" secondItem="Y0f-KZ-PZG" secondAttribute="top" id="4V1-rQ-B9d"/>
                             <constraint firstItem="oXM-JR-Fal" firstAttribute="leading" secondItem="Y0f-KZ-PZG" secondAttribute="leading" id="IDZ-yi-nrI"/>
+                            <constraint firstItem="Y0f-KZ-PZG" firstAttribute="trailing" secondItem="Zda-Ql-V8o" secondAttribute="trailing" id="J56-gT-gdG"/>
+                            <constraint firstItem="Zda-Ql-V8o" firstAttribute="centerY" secondItem="00p-EE-rqr" secondAttribute="centerY" id="Lro-nA-H9C"/>
+                            <constraint firstItem="Zda-Ql-V8o" firstAttribute="leading" secondItem="Y0f-KZ-PZG" secondAttribute="leading" id="TW3-nk-jtR"/>
                             <constraint firstItem="Y0f-KZ-PZG" firstAttribute="bottom" secondItem="oXM-JR-Fal" secondAttribute="bottom" id="UQj-T2-T7t"/>
                             <constraint firstItem="Y0f-KZ-PZG" firstAttribute="trailing" secondItem="oXM-JR-Fal" secondAttribute="trailing" id="UjC-vh-CHS"/>
+                            <constraint firstItem="Zda-Ql-V8o" firstAttribute="top" secondItem="Y0f-KZ-PZG" secondAttribute="top" constant="250" id="sK9-E8-Y4h"/>
+                            <constraint firstItem="Zda-Ql-V8o" firstAttribute="centerX" secondItem="00p-EE-rqr" secondAttribute="centerX" id="xCd-O5-JmC"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Series" id="PVt-n3-0qb"/>
                     <connections>
+                        <outlet property="labelEstadoVazio" destination="62c-eU-ZyO" id="FRQ-tR-bVH"/>
                         <outlet property="serieCollectionView" destination="oXM-JR-Fal" id="q1T-Un-3kr"/>
+                        <outlet property="viewEstadoVazio" destination="Zda-Ql-V8o" id="Xui-tR-fZD"/>
                         <segue destination="aMl-XS-S8r" kind="show" identifier="showSerieDetailVC" id="tFi-Sz-MBN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DHn-FM-Fsm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="70" y="1483"/>
+            <point key="canvasLocation" x="69.565217391304358" y="1482.5892857142856"/>
         </scene>
         <!--Serie-->
         <scene sceneID="Pve-Xp-Kob">
@@ -597,14 +622,21 @@
         <image name="heart" catalog="system" width="128" height="109"/>
         <image name="heart.fill" catalog="system" width="128" height="109"/>
         <image name="lifepreserver" catalog="system" width="128" height="121"/>
+        <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <namedColor name="AccentColor">
             <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <systemColor name="linkColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="secondaryLabelColor">
             <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemPinkColor">
+            <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
