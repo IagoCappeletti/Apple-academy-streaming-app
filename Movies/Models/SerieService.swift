@@ -42,7 +42,7 @@ struct SerieService {
                 let series = serieResponse.search
                 completion(series)
             } catch {
-                print("FETCH ALL SERIES ERROR: \(error)")
+                print("FETCH ALL SERIES ERROR:TITLEEEEEEEEEEEEEEEEEEE \(error)")
                 completion([])
             }
         }
