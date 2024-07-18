@@ -47,7 +47,7 @@ class SerieListViewController: UIViewController {
         serieService.searchSeriesTitle(withTitle: serieTitle) { series in
             DispatchQueue.main.async {
                 self.hiddenView(bool: !series.isEmpty)
-                self.labelEstadoVazio.text = "Está série " + searchText + "não foi encontrada"
+                self.labelEstadoVazio.text = "Série " + searchText + " não foi encontrada"
                 self.series = series
                 self.serieCollectionView.reloadData()
             }
