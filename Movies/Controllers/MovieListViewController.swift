@@ -11,6 +11,8 @@ class MovieListViewController: UIViewController {
 
     // Outlets
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var viewEstadoVazio: UIView!
+    @IBOutlet weak var labelEstadoVazio: UILabel!
     
     // Services
     var movieService = MovieService()
@@ -38,9 +40,15 @@ class MovieListViewController: UIViewController {
         setupCollectionView()
     }
     
+    public func hiddenView(bool: Bool){
+        self.viewEstadoVazio.isHidden = bool
+    }
+    
     private func loadMovies(withTitle movieTitle: String) {
         movieService.searchMovies(withTitle: movieTitle) { movies in
             DispatchQueue.main.async {
+                self.hiddenView(bool: !movies.isEmpty)
+                self.labelEstadoVazio.text = "Filme " + searchTextMovie + " não foi encontrado"
                 self.movies = movies
                 self.collectionView.reloadData()
             }
@@ -117,12 +125,12 @@ extension MovieListViewController: UICollectionViewDelegate {
 }
 
 // MARK: - UISearchResultsUpdating
-
+var searchTextMovie = ""
 extension MovieListViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
-        let searchText = searchController.searchBar.text ?? ""
+        searchTextMovie = searchController.searchBar.text ?? ""
         
-        if searchText.isEmpty {
+        if searchTextMovie.isEmpty {
             loadMovies(withTitle: defaultSearchName)
         } else {
             loadMovies(withTitle: searchText)
