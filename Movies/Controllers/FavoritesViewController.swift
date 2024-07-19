@@ -7,6 +7,10 @@
 
 import UIKit
 
+enum ContentFilter {
+    case movies, series
+}
+
 class FavoritesViewController: UIViewController {
     
     // Outlets
@@ -20,13 +24,35 @@ class FavoritesViewController: UIViewController {
     private let searchController = UISearchController()
     private var movies: [Movie] = []
     private var series: [Serie] = []
-
+    
+    private var contentFilter: ContentFilter?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViewController()
     }
     
+    func filterMovies() {
+       movies = favoriteService.listAll()
+       series = []
+        contentFilter = .movies
+       tableView.reloadData()
+   }
+
+    func filterSeries() {
+       series = favoriteService.listAllSerie()
+       movies = []
+        contentFilter = .series
+       tableView.reloadData()
+   }
+    
+    
+    private func showAll() {
+        movies = favoriteService.listAll()
+        series = favoriteService.listAllSerie()
+        contentFilter = nil
+        tableView.reloadData()
+    }
     
 //    @IBOutlet weak var ButtonSerie: UICommand!
 //    @IBOutlet weak var ButtonMovies: UICommand!
@@ -66,18 +92,20 @@ class FavoritesViewController: UIViewController {
     
     private func setupRightBarButtonItem() {
         let barButtonMenu = UIMenu(
-            title: "",
-            children: [
-                UIAction(title: "Filmes", handler: { action in
-                    print(action)
-                    self.movies = self.favoriteService.listAll()
-                }),
-                UIAction(title: "Séries", handler: { action in
-                    self.series = self.favoriteService.listAllSerie()
-                })
-            ])
-        
-        rightBarButtonItem.menu = barButtonMenu
+                title: "",
+                children: [
+                    UIAction(title: "Todos", handler: { [weak self] action in
+                       self?.showAll()
+                    }),
+                    UIAction(title: "Movies", handler: { [weak self] action in
+                        self?.filterMovies()
+                    }),
+                    UIAction(title: "Series", handler: { [weak self] action in
+                        self?.filterSeries()
+                    })
+                ])
+            
+            rightBarButtonItem.menu = barButtonMenu
     }
     
     private func setupSearchController() {
@@ -170,30 +198,57 @@ extension FavoritesViewController: UISearchResultsUpdating {
     
     func updateSearchResults(for searchController: UISearchController) {
         let searchText = searchController.searchBar.text ?? ""
-        
-        if searchText.isEmpty {
-            movies = favoriteService.listAll()
-           series = favoriteService.listAllSerie()
+
+        if searchText.isEmpty{
+            updateLayoutForContentFilter(contentFilter)
         } else {
+            updateLayoutForContentFilter(contentFilter, withSearchText: searchText)
+        }
+    }
+    
+    private func updateLayoutForContentFilter(_ contentFilter: ContentFilter?, withSearchText searchText: String) {
+        guard let contentFilter = contentFilter else {
             movies = filteredMovies(byTitle: searchText)
+            series = filteredSeries(byTitle: searchText)
+            tableView.reloadData()
+            return
+        }
+        
+        switch contentFilter {
+        case .movies:
+            movies = filteredMovies(byTitle: searchText)
+        case .series:
             series = filteredSeries(byTitle: searchText)
         }
         
         tableView.reloadData()
     }
     
+    private func updateLayoutForContentFilter(_ contentFilter: ContentFilter?) {
+        guard let contentFilter = contentFilter else {
+            showAll()
+            return
+        }
+        
+        switch contentFilter {
+        case .movies:
+            filterMovies()
+        case .series:
+            filterSeries()
+        }
+    }
+    
     private func filteredSeries(byTitle serieTitle: String) -> [Serie] {
-        favoriteService.listAllSerie().filter({ serie in
-            serie.title.contains(serieTitle)
-        })
-    }
-    
-    
-    private func filteredMovies(byTitle movieTitle: String) -> [Movie] {
-        favoriteService.listAll().filter({ movie in
-            movie.title.contains(movieTitle)
-        })
-    }
+            return favoriteService.listAllSerie().filter { serie in
+                serie.title.contains(serieTitle)
+            }
+        }
+        
+        private func filteredMovies(byTitle movieTitle: String) -> [Movie] {
+            return favoriteService.listAll().filter { movie in
+                movie.title.contains(movieTitle)
+            }
+        }
     
 }
     

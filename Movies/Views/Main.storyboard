@@ -324,7 +324,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Favoritos" id="T6k-P9-VGS">
-                        <barButtonItem key="rightBarButtonItem" title="Item" id="pf2-s0-qGE"/>
+                        <barButtonItem key="rightBarButtonItem" title="Filtrar" id="pf2-s0-qGE"/>
                     </navigationItem>
                     <connections>
                         <outlet property="rightBarButtonItem" destination="pf2-s0-qGE" id="acT-2c-ZtE"/>
