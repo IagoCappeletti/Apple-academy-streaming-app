@@ -434,6 +434,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Series" id="PVt-n3-0qb"/>
                     <connections>
+                        <outlet property="imageView" destination="Jdh-iP-vwZ" id="LlQ-2J-KZQ"/>
                         <outlet property="labelEstadoVazio" destination="62c-eU-ZyO" id="FRQ-tR-bVH"/>
                         <outlet property="serieCollectionView" destination="oXM-JR-Fal" id="q1T-Un-3kr"/>
                         <outlet property="viewEstadoVazio" destination="Zda-Ql-V8o" id="Xui-tR-fZD"/>
