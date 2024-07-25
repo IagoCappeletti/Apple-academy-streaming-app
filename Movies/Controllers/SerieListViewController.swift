@@ -9,10 +9,11 @@ import UIKit
 
 class SerieListViewController: UIViewController {
     
-   
+    
     @IBOutlet weak var serieCollectionView: UICollectionView!
     @IBOutlet weak var viewEstadoVazio: UIView!
     @IBOutlet weak var labelEstadoVazio: UILabel!
+    @IBOutlet weak var imageView: UIImageView!
     
     var serieService = SerieService()
     
@@ -32,34 +33,70 @@ class SerieListViewController: UIViewController {
         setupViewController()
         loadSeries(withTitle: defaultSearchName)
     }
-                   
+    
     private func setupViewController() {
-            setupSearchController()
-            setupCollectionView()
+        setupSearchController()
+        setupCollectionView()
     }
     
     public func hiddenView(bool: Bool){
         self.viewEstadoVazio.isHidden = bool
     }
-     
-
+    
+    public func hiddenCollectioView(bool: Bool){
+        
+        self.serieCollectionView.isHidden = bool
+        
+    }
+    
+    
+    private func semConexaoAPI(){
+        
+            if let image = UIImage(systemName: "wifi.slash") {
+                self.imageView.image = image
+        }
+            self.labelEstadoVazio.text = "Sem Conexao"
+    }
+    
+    
+    
     private func loadSeries(withTitle serieTitle: String) {
         serieService.searchSeriesTitle(withTitle: serieTitle) { series in
-            DispatchQueue.main.async {
-                self.hiddenView(bool: !series.isEmpty)
-                self.labelEstadoVazio.text = "Série " + searchText + " não foi encontrada"
-                self.series = series
-                self.serieCollectionView.reloadData()
+            
+            DispatchQueue.main.async { [self] in
+                
+                guard let series = series else {
+                    // SEM INTERNET
+                    self.semConexaoAPI()
+                    self.hiddenCollectioView(bool: true)
+                    self.hiddenView(bool: false)
+                    return
+                }
+                // if series.isEmpty { // Não tem a série pro título serieTitle }
+                if(series.isEmpty){
+                    self.hiddenCollectioView(bool: true)
+                    self.hiddenView(bool: false)
+                    self.labelEstadoVazio.text = "Série " + searchText + " não foi encontrada"
+                }else{
+                    // else { // Existe séries para serem apresentadas }
+                    self.hiddenCollectioView(bool: false)
+                    self.hiddenView(bool: true)
+                    self.series = series
+                    self.serieCollectionView.reloadData()
+                }
             }
         }
     }
+    
+    
+    
     func setupSearchController() {
         searchController.searchResultsUpdater = self
         searchController.searchBar.placeholder = "Pesquisar"
         navigationItem.searchController = searchController
     }
     
-     func setupCollectionView() {
+    func setupCollectionView() {
         let nib = UINib(nibName: "SerieCollectionViewCell", bundle: nil)
         serieCollectionView.register(nib, forCellWithReuseIdentifier: SerieCollectionViewCell.identifier)
         serieCollectionView.dataSource = self
@@ -70,13 +107,13 @@ class SerieListViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let serieDetailVC = segue.destination as? SerieDetailViewController,
               let serie = sender as? Serie else {
-            return
-        }
+                  return
+              }
         
         serieDetailVC.serieId = serie.id
         serieDetailVC.serieTitle = serie.title
     }
-
+    
 }
 
 extension SerieListViewController: UICollectionViewDataSource {
@@ -93,7 +130,7 @@ extension SerieListViewController: UICollectionViewDataSource {
         cell.setup(serie: serie)
         return cell
     }
-
+    
 }
 
 extension SerieListViewController: UICollectionViewDelegateFlowLayout {
@@ -123,7 +160,7 @@ extension SerieListViewController: UICollectionViewDelegate {
 var searchText = ""
 extension SerieListViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
-         searchText = searchController.searchBar.text ?? ""
+        searchText = searchController.searchBar.text ?? ""
         
         if searchText.isEmpty {
             loadSeries(withTitle: defaultSearchName)
