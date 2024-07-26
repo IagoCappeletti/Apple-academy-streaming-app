@@ -18,7 +18,7 @@ class SerieListViewController: UIViewController {
     var serieService = SerieService()
     
     private let searchController = UISearchController()
-    private let defaultSearchName = "Friends"
+    private let defaultSearchName = "friends"
     private var series: [Serie] = []
     private let segueIdentifier = "showSerieDetailVC"
     

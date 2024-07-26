@@ -18,9 +18,11 @@ class MovieListViewController: UIViewController {
     // Services
     var movieService = MovieService()
     
+//    private var titleList : [String] = ["Piratas", "Steve Jobs", ]
+    
     // Search
     private let searchController = UISearchController()
-    private let defaultSearchName = "Piratas "
+    private let defaultSearchName = "Steve Jobs"
     private var movies: [Movie] = []
     private let segueIdentifier = "showMovieDetailVC"
     
@@ -71,7 +73,7 @@ class MovieListViewController: UIViewController {
 //            }
             
             DispatchQueue.main.async { [self] in
-                
+
                 guard let movies = movies else {
                     // SEM INTERNET
                     self.semConexaoAPI()
@@ -79,11 +81,11 @@ class MovieListViewController: UIViewController {
                     self.hiddenView(bool: false)
                     return
                 }
-                // if series.isEmpty { // Não tem a série pro título serieTitle }
+                // if movies.isEmpty { // Não tem a série pro título serieTitle }
                 if(movies.isEmpty){
                     self.hiddenCollectioView(bool: true)
                     self.hiddenView(bool: false)
-                    self.labelEstadoVazio.text = "Movie " + searchText + " não foi encontrado"
+                    self.labelEstadoVazio.text = "Filmera " + searchTextMovie + " não foi encontrado"
                 }else{
                     // else { // Existe séries para serem apresentadas }
                     self.hiddenCollectioView(bool: false)
@@ -174,7 +176,7 @@ extension MovieListViewController: UISearchResultsUpdating {
         if searchTextMovie.isEmpty {
             loadMovies(withTitle: defaultSearchName)
         } else {
-            loadMovies(withTitle: searchText)
+            loadMovies(withTitle: searchTextMovie)
         }
         
         collectionView.reloadData()
