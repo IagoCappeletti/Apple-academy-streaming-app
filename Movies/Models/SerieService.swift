@@ -31,6 +31,7 @@ struct SerieService {
         let request = URLRequest(url: url)
         
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            
             if data == nil &&
                 response == nil {
                 completion(nil)
