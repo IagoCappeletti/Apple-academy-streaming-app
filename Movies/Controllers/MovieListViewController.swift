@@ -12,6 +12,7 @@ class MovieListViewController: UIViewController {
     // Outlets
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var viewEstadoVazio: UIView!
+    @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var labelEstadoVazio: UILabel!
     
     // Services
@@ -19,7 +20,7 @@ class MovieListViewController: UIViewController {
     
     // Search
     private let searchController = UISearchController()
-    private let defaultSearchName = "Steve Jobs"
+    private let defaultSearchName = "Piratas "
     private var movies: [Movie] = []
     private let segueIdentifier = "showMovieDetailVC"
     
@@ -44,16 +45,56 @@ class MovieListViewController: UIViewController {
         self.viewEstadoVazio.isHidden = bool
     }
     
+    public func hiddenCollectioView(bool: Bool){
+        
+        self.collectionView.isHidden = bool
+        
+    }
+    
+    private func semConexaoAPI(){
+        
+            if let image = UIImage(systemName: "wifi.slash") {
+                self.imageView.image = image
+        }
+            self.labelEstadoVazio.text = "Sem Conexao"
+    }
+    
+    
+    
     private func loadMovies(withTitle movieTitle: String) {
         movieService.searchMovies(withTitle: movieTitle) { movies in
-            DispatchQueue.main.async {
-                self.hiddenView(bool: !movies.isEmpty)
-                self.labelEstadoVazio.text = "Filme " + searchTextMovie + " não foi encontrado"
-                self.movies = movies
-                self.collectionView.reloadData()
+//            DispatchQueue.main.async {
+//                self.hiddenView(bool: !movies.isEmpty)
+//                self.labelEstadoVazio.text = "Filme " + searchTextMovie + " não foi encontrado"
+//                self.movies = movies
+//                self.collectionView.reloadData()
+//            }
+            
+            DispatchQueue.main.async { [self] in
+                
+                guard let movies = movies else {
+                    // SEM INTERNET
+                    self.semConexaoAPI()
+                    self.hiddenCollectioView(bool: true)
+                    self.hiddenView(bool: false)
+                    return
+                }
+                // if series.isEmpty { // Não tem a série pro título serieTitle }
+                if(movies.isEmpty){
+                    self.hiddenCollectioView(bool: true)
+                    self.hiddenView(bool: false)
+                    self.labelEstadoVazio.text = "Movie " + searchText + " não foi encontrado"
+                }else{
+                    // else { // Existe séries para serem apresentadas }
+                    self.hiddenCollectioView(bool: false)
+                    self.hiddenView(bool: true)
+                    self.movies = movies
+                    self.collectionView.reloadData()
+                }
             }
         }
     }
+    
     
     private func setupSearchController() {
         searchController.searchResultsUpdater = self
