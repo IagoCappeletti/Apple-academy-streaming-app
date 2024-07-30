@@ -112,6 +112,7 @@
                     <navigationItem key="navigationItem" title="Filmes" id="1HB-yA-5BL"/>
                     <connections>
                         <outlet property="collectionView" destination="If5-H7-qSN" id="waD-An-z0P"/>
+                        <outlet property="imageView" destination="0ca-vv-opb" id="5k7-rL-8mI"/>
                         <outlet property="labelEstadoVazio" destination="6xM-fi-05s" id="gZa-kt-7Vr"/>
                         <outlet property="viewEstadoVazio" destination="4HU-ZO-6Td" id="p8c-tp-tV3"/>
                         <segue destination="PiT-Pv-bea" kind="show" identifier="showMovieDetailVC" id="SkL-1G-Wte"/>
