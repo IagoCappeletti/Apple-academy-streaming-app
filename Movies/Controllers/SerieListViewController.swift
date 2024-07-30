@@ -1,30 +1,26 @@
 //
-//  MovieListViewController.swift
+//  SerieListViewController.swift
 //  Movies
 //
-//  Created by Geovana Contine on 26/03/24.
+//  Created by ios-noite-6 on 04/07/24.
 //
 
 import UIKit
 
-class MovieListViewController: UIViewController {
-
-    // Outlets
-    @IBOutlet weak var collectionView: UICollectionView!
+class SerieListViewController: UIViewController {
+    
+    
+    @IBOutlet weak var serieCollectionView: UICollectionView!
     @IBOutlet weak var viewEstadoVazio: UIView!
-    @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var labelEstadoVazio: UILabel!
+    @IBOutlet weak var imageView: UIImageView!
     
-    // Services
-    var movieService = MovieService()
+    var serieService = SerieService()
     
-//    private var titleList : [String] = ["Piratas", "Steve Jobs", ]
-    
-    // Search
     private let searchController = UISearchController()
-    private let defaultSearchName = "Steve Jobs"
-    private var movies: [Movie] = []
-    private let segueIdentifier = "showMovieDetailVC"
+    private let defaultSearchName = "friends"
+    private var series: [Serie] = []
+    private let segueIdentifier = "showSerieDetailVC"
     
     // Collection item parameters
     private let itemsPerRow = 2.0
@@ -35,7 +31,7 @@ class MovieListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViewController()
-        loadMovies(withTitle: defaultSearchName)
+        loadSeries(withTitle: defaultSearchName)
     }
     
     private func setupViewController() {
@@ -49,9 +45,10 @@ class MovieListViewController: UIViewController {
     
     public func hiddenCollectioView(bool: Bool){
         
-        self.collectionView.isHidden = bool
+        self.serieCollectionView.isHidden = bool
         
     }
+    
     
     private func semConexaoAPI(){
         
@@ -63,86 +60,80 @@ class MovieListViewController: UIViewController {
     
     
     
-    private func loadMovies(withTitle movieTitle: String) {
-        movieService.searchMovies(withTitle: movieTitle) { movies in
-//            DispatchQueue.main.async {
-//                self.hiddenView(bool: !movies.isEmpty)
-//                self.labelEstadoVazio.text = "Filme " + searchTextMovie + " não foi encontrado"
-//                self.movies = movies
-//                self.collectionView.reloadData()
-//            }
+    private func loadSeries(withTitle serieTitle: String) {
+        serieService.searchSeriesTitle(withTitle: serieTitle) { series in
             
             DispatchQueue.main.async { [self] in
-
-                guard let movies = movies else {
+                
+                guard let series = series else {
                     // SEM INTERNET
                     self.semConexaoAPI()
                     self.hiddenCollectioView(bool: true)
                     self.hiddenView(bool: false)
                     return
                 }
-                // if movies.isEmpty { // Não tem a série pro título serieTitle }
-                if(movies.isEmpty){
+                // if series.isEmpty { // Não tem a série pro título serieTitle }
+                if(series.isEmpty){
                     self.hiddenCollectioView(bool: true)
                     self.hiddenView(bool: false)
-                    self.labelEstadoVazio.text = "Filmera " + searchTextMovie + " não foi encontrado"
+                    self.labelEstadoVazio.text = "Série " + searchText + " não foi encontrada"
                 }else{
                     // else { // Existe séries para serem apresentadas }
                     self.hiddenCollectioView(bool: false)
                     self.hiddenView(bool: true)
-                    self.movies = movies
-                    self.collectionView.reloadData()
+                    self.series = series
+                    self.serieCollectionView.reloadData()
                 }
             }
         }
     }
     
     
-    private func setupSearchController() {
+    
+    func setupSearchController() {
         searchController.searchResultsUpdater = self
         searchController.searchBar.placeholder = "Pesquisar"
         navigationItem.searchController = searchController
     }
     
-    private func setupCollectionView() {
-        let nib = UINib(nibName: "MovieCollectionViewCell", bundle: nil)
-        collectionView.register(nib, forCellWithReuseIdentifier: MovieCollectionViewCell.identifier)
-        collectionView.dataSource = self
-        collectionView.delegate = self
+    func setupCollectionView() {
+        let nib = UINib(nibName: "SerieCollectionViewCell", bundle: nil)
+        serieCollectionView.register(nib, forCellWithReuseIdentifier: SerieCollectionViewCell.identifier)
+        serieCollectionView.dataSource = self
+        serieCollectionView.delegate = self
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let movieDetailVC = segue.destination as? MovieDetailViewController,
-              let movie = sender as? Movie else {
-            return
-        }
+        guard let serieDetailVC = segue.destination as? SerieDetailViewController,
+              let serie = sender as? Serie else {
+                  return
+              }
         
-        movieDetailVC.movieId = movie.id
-        movieDetailVC.movieTitle = movie.title
+        serieDetailVC.serieId = serie.id
+        serieDetailVC.serieTitle = serie.title
     }
+    
 }
 
-// MARK: - UICollectionViewDataSource
-
-extension MovieListViewController: UICollectionViewDataSource {
+extension SerieListViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        movies.count
+        series.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MovieCollectionViewCell.identifier, for: indexPath) as? MovieCollectionViewCell else {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SerieCollectionViewCell.identifier, for: indexPath) as? SerieCollectionViewCell else {
             return UICollectionViewCell()
         }
         
-        let movie = movies[indexPath.row]
-        cell.setup(movie: movie)
+        let serie = series[indexPath.row]
+        cell.setup(serie: serie)
         return cell
     }
+    
 }
 
-// MARK: - UICollectionViewDelegateFlowLayout
-
-extension MovieListViewController: UICollectionViewDelegateFlowLayout {
+extension SerieListViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(
         _ collectionView: UICollectionView,
         layout collectionViewLayout: UICollectionViewLayout,
@@ -158,27 +149,26 @@ extension MovieListViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
-// MARK: - UICollectionViewDelegate
-
-extension MovieListViewController: UICollectionViewDelegate {
+extension SerieListViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let selectedMovie = movies[indexPath.row]
-        performSegue(withIdentifier: segueIdentifier, sender: selectedMovie)
+        let selectedSerie = series[indexPath.row]
+        performSegue(withIdentifier: segueIdentifier, sender: selectedSerie)
     }
 }
 
 // MARK: - UISearchResultsUpdating
-var searchTextMovie = ""
-extension MovieListViewController: UISearchResultsUpdating {
+var searchText = ""
+extension SerieListViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
-        searchTextMovie = searchController.searchBar.text ?? ""
+        searchText = searchController.searchBar.text ?? ""
         
-        if searchTextMovie.isEmpty {
-            loadMovies(withTitle: defaultSearchName)
+        if searchText.isEmpty {
+            loadSeries(withTitle: defaultSearchName)
         } else {
-            loadMovies(withTitle: searchTextMovie)
+            loadSeries(withTitle: searchText)
         }
         
-        collectionView.reloadData()
+        serieCollectionView.reloadData()
     }
 }
+

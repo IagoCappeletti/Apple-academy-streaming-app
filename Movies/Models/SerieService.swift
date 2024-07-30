@@ -1,26 +1,27 @@
 //
-//  MovieService.swift
+//  SerieService.swift
 //  Movies
 //
-//  Created by Geovana Contine on 26/03/24.
+//  Created by ios-noite-6 on 05/07/24.
 //
 
 import Foundation
 
-struct MovieService {
+struct SerieService {
     
     private let apiBaseURL = "https://www.omdbapi.com/?apikey="
     private let apiToken = "fad9f001"
+    private let serieURL =  "&type=series"
     
     private var apiURL: String {
-        apiBaseURL + apiToken
+        apiBaseURL + apiToken + serieURL
     }
     
     private let decoder = JSONDecoder()
     
-    func searchMovies(withTitle title: String, completion: @escaping ([Movie]?) -> Void) {
+    func searchSeriesTitle(withTitle title: String, completion: @escaping ([Serie]?) -> Void) {
         let query = title.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
-        let endpoint = apiURL + "&s=\(query)" + "&type=movie"
+        let endpoint = apiURL + "&s=\(query)"
         
         guard let url = URL(string: endpoint) else {
             completion([])
@@ -30,13 +31,11 @@ struct MovieService {
         let request = URLRequest(url: url)
         
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
-            
             if data == nil &&
                 response == nil {
                 completion(nil)
                 return
             }
-            
             
             guard let data = data,
                     error == nil else {
@@ -45,11 +44,11 @@ struct MovieService {
             }
             
             do {
-                let movieResponse = try decoder.decode(MovieSearchResponse.self, from: data)
-                let movies = movieResponse.search
-                completion(movies)
+                let serieResponse = try decoder.decode(SerieSearchResponse.self, from: data)
+                let series = serieResponse.search
+                completion(series)
             } catch {
-                print("FETCH ALL MOVIES ERROR: \(error)")
+                print("FETCH ALL SERIES ERROR:TITLEEEEEEEEEEEEEEEEEEE \(error)")
                 completion([])
             }
         }
@@ -57,8 +56,8 @@ struct MovieService {
         task.resume()
     }
     
-    func searchMovie(withId movieId: String, completion: @escaping (Movie?) -> Void) {
-        let query = movieId.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+    func searchSerieId(withId serieId: String, completion: @escaping (Serie?) -> Void) {
+        let query = serieId.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
         let endpoint = apiURL + "&i=\(query)"
         
         guard let url = URL(string: endpoint) else {
@@ -75,10 +74,10 @@ struct MovieService {
             }
             
             do {
-                let movie = try decoder.decode(Movie.self, from: data)
-                completion(movie)
+                let serie = try decoder.decode(Serie.self, from: data)
+                completion(serie)
             } catch {
-                print("FETCH MOVIE ERROR: \(error)")
+                print("FETCH SERIE ERROR: \(error)")
                 completion(nil)
             }
         }

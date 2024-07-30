@@ -15,9 +15,15 @@ class FavoriteService {
     
     // In memory data
     private var favoriteMovies: [Movie] = []
+    private var favoriteSeries: [Serie] = []
+    
+    
     
     func listAll() -> [Movie] {
-        favoriteMovies
+        favoriteMovies.sorted{
+            $0.title < $1.title
+        }
+//        listFavoritesAll()
     }
     
     func isFavorite(movieId: String) -> Bool {
@@ -35,4 +41,41 @@ class FavoriteService {
             movie.id == movieId
         }
     }
+    
+    //Series
+    
+    
+    func listAllSerie() -> [Serie] {
+        favoriteSeries.sorted{
+            $0.title < $1.title
+        }
+//        listFavoritesAll()
+    }
+    
+    func isFavoriteSerie(serieId: String) -> Bool {
+        favoriteSeries.contains { serie in
+            serie.id == serieId
+        }
+    }
+    
+    func addSerie(_ serie: Serie) {
+        favoriteSeries.append(serie)
+    }
+    
+    func removeSerie(withId serieId: String) {
+        favoriteSeries.removeAll { serie in
+            serie.id == serieId
+        }
+    }
+    
+    func listFavoritesAll() -> [Any] {
+        let combinedList:[Any] = favoriteSeries + favoriteMovies
+        
+        return combinedList.sorted{
+            let firstTitle = ($0 is Movie ? ($0 as! Movie).title : ($0 as! Serie).title)
+            let secondTitle = ($1 is Movie ? ($1 as! Movie).title : ($1 as! Serie).title)
+            return firstTitle < secondTitle
+        }
+    }
+        
 }
