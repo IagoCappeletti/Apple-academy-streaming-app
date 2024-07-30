@@ -54,25 +54,6 @@ class FavoritesViewController: UIViewController {
         tableView.reloadData()
     }
     
-//    @IBOutlet weak var ButtonSerie: UICommand!
-//    @IBOutlet weak var ButtonMovies: UICommand!
-    
-    
-//    @IBAction func buttonOrdenacao(_ sender: UIBarButtonItem) {
-//
-//        if((ButtonSerie) != nil){
-//            print("teste serie")
-//        }
-//        else{
-//            print("teste movie")
-//        }
-//
-//
-//    }
-    
-    
-    
-    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
